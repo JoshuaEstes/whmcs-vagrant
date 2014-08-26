@@ -91,3 +91,12 @@ file { 'ioncube.config':
   notify  => Service['apache2'],
   require => Exec['ioncube.copy'],
 }
+
+####
+#
+# cron jobs
+#
+cron { 'whmcs':
+  command => 'php -q /var/www/whmcs/whmcs/admin/cron.php',
+  hour    => '0',
+}
